@@ -7,6 +7,7 @@ module Ruled
  
     module ClassMethods
       def acts_as_ruled(options = {})
+        puts "hello form acts as ruled"
         # your code will go here
       end
     end
