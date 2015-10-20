@@ -30,9 +30,9 @@ module Ruled
       def self.extended(klazz)
         klazz.define_callbacks :before_save
 
-        klazz.before_save do |*args, &block|
+        klazz.define_singleton_method("before_save") do |*args, &block|
           if (klazz.count + 1) <= Limits::MAX_RECORDS #max_records 
-            send(:before_save, *args, &block)
+            before_save *args, &block
           else
             puts "No save. reached Limit of records"
           end
