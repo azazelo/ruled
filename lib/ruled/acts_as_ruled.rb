@@ -6,9 +6,19 @@ module Ruled
     end
  
     module ClassMethods
+      
+      def self.included(into)
+        @into = into
+      end
+      
       def acts_as_ruled(options = {})
-        puts "hello form acts as ruled"
-        # your code will go here
+        @options = options
+
+      end
+      
+      def before_save
+        puts @into.count
+        super
       end
     end
   end
